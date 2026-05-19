@@ -1,0 +1,346 @@
+2026-05-18 11:50:50,596 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] Starting SelfCorrectingRagApplication using Java 17.0.15 with PID 3988 (C:\Projects\Personal\selfCorrectingRag\target\classes started by basak in C:\Projects\Personal\selfCorrectingRag)
+2026-05-18 11:50:50,600 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2026-05-18 11:50:50,679 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-05-18 11:50:50,679 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-05-18 11:50:52,159 INFO o.s.b.w.e.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port 8086 (http)
+2026-05-18 11:50:52,171 INFO o.a.coyote.http11.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8086"]
+2026-05-18 11:50:52,173 INFO o.a.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2026-05-18 11:50:52,173 INFO o.a.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-05-18 11:50:52,242 INFO o.a.c.c.C.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2026-05-18 11:50:52,244 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1564 ms
+2026-05-18 11:50:53,415 WARN o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'ragController' defined in file [C:\Projects\Personal\selfCorrectingRag\target\classes\com\ai\selfCorrectingRag\controller\RagController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'documentIngestionService' defined in file [C:\Projects\Personal\selfCorrectingRag\target\classes\com\ai\selfCorrectingRag\service\DocumentIngestionService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'vectorStore' defined in class path resource [org/springframework/ai/vectorstore/chroma/autoconfigure/ChromaVectorStoreAutoConfiguration.class]: Collection SpringAiCollection with the tenant: SpringAiTenant and the database: SpringAiDatabase doesn't exist and won't be created as the initializeSchema is set to false.
+2026-05-18 11:50:53,419 INFO o.a.catalina.core.StandardService [restartedMain] Stopping service [Tomcat]
+2026-05-18 11:50:53,430 INFO o.s.b.a.l.ConditionEvaluationReportLogger [restartedMain] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-05-18 11:50:53,457 ERROR o.s.boot.SpringApplication [restartedMain] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'ragController' defined in file [C:\Projects\Personal\selfCorrectingRag\target\classes\com\ai\selfCorrectingRag\controller\RagController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'documentIngestionService' defined in file [C:\Projects\Personal\selfCorrectingRag\target\classes\com\ai\selfCorrectingRag\service\DocumentIngestionService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'vectorStore' defined in class path resource [org/springframework/ai/vectorstore/chroma/autoconfigure/ChromaVectorStoreAutoConfiguration.class]: Collection SpringAiCollection with the tenant: SpringAiTenant and the database: SpringAiDatabase doesn't exist and won't be created as the initializeSchema is set to false.
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1228)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1194)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1130)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:991)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:628)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.ai.selfCorrectingRag.SelfCorrectingRagApplication.main(SelfCorrectingRagApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentIngestionService' defined in file [C:\Projects\Personal\selfCorrectingRag\target\classes\com\ai\selfCorrectingRag\service\DocumentIngestionService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'vectorStore' defined in class path resource [org/springframework/ai/vectorstore/chroma/autoconfigure/ChromaVectorStoreAutoConfiguration.class]: Collection SpringAiCollection with the tenant: SpringAiTenant and the database: SpringAiDatabase doesn't exist and won't be created as the initializeSchema is set to false.
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 26 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorStore' defined in class path resource [org/springframework/ai/vectorstore/chroma/autoconfigure/ChromaVectorStoreAutoConfiguration.class]: Collection SpringAiCollection with the tenant: SpringAiTenant and the database: SpringAiDatabase doesn't exist and won't be created as the initializeSchema is set to false.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1708)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 40 common frames omitted
+Caused by: java.lang.RuntimeException: Collection SpringAiCollection with the tenant: SpringAiTenant and the database: SpringAiDatabase doesn't exist and won't be created as the initializeSchema is set to false.
+	at org.springframework.ai.chroma.vectorstore.ChromaVectorStore.afterPropertiesSet(ChromaVectorStore.java:137)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822)
+	... 50 common frames omitted
+2026-05-18 11:52:21,290 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] Starting SelfCorrectingRagApplication using Java 17.0.15 with PID 32860 (C:\Projects\Personal\selfCorrectingRag\target\classes started by basak in C:\Projects\Personal\selfCorrectingRag)
+2026-05-18 11:52:21,293 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2026-05-18 11:52:21,365 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-05-18 11:52:21,366 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-05-18 11:52:22,638 INFO o.s.b.w.e.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port 8086 (http)
+2026-05-18 11:52:22,647 INFO o.a.coyote.http11.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8086"]
+2026-05-18 11:52:22,649 INFO o.a.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2026-05-18 11:52:22,649 INFO o.a.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-05-18 11:52:22,714 INFO o.a.c.c.C.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2026-05-18 11:52:22,715 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1348 ms
+2026-05-18 11:52:24,031 DEBUG o.s.a.m.t.a.ToolCallingAutoConfiguration [restartedMain] Cannot load class: org.springframework.security.oauth2.client.ClientAuthorizationException
+2026-05-18 11:52:24,236 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2026-05-18 11:52:24,248 INFO o.a.coyote.http11.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8086"]
+2026-05-18 11:52:24,258 INFO o.s.b.w.e.tomcat.TomcatWebServer [restartedMain] Tomcat started on port 8086 (http) with context path '/'
+2026-05-18 11:52:24,269 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] Started SelfCorrectingRagApplication in 3.659 seconds (process running for 4.335)
+2026-05-18 11:54:58,578 INFO o.a.c.c.C.[Tomcat].[localhost].[/] [http-nio-8086-exec-3] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-18 11:54:58,578 INFO o.s.web.servlet.DispatcherServlet [http-nio-8086-exec-3] Initializing Servlet 'dispatcherServlet'
+2026-05-18 11:54:58,581 INFO o.s.web.servlet.DispatcherServlet [http-nio-8086-exec-3] Completed initialization in 3 ms
+2026-05-18 11:54:58,628 INFO c.a.s.controller.RagController [http-nio-8086-exec-3] REST request to upload file: AritraBasak_CV.pdf
+2026-05-18 11:54:58,628 INFO c.a.s.s.DocumentIngestionService [http-nio-8086-exec-3] Starting ingestion for file: AritraBasak_CV.pdf
+2026-05-18 11:54:59,757 INFO c.a.s.s.DocumentIngestionService [http-nio-8086-exec-3] Extracted 1 raw documents.
+2026-05-18 11:54:59,884 INFO o.s.a.t.splitter.TextSplitter [http-nio-8086-exec-3] Splitting up document into 2 chunks.
+2026-05-18 11:54:59,887 INFO c.a.s.s.DocumentIngestionService [http-nio-8086-exec-3] Split into 2 chunks for embedding.
+2026-05-18 11:55:03,849 INFO c.a.s.s.DocumentIngestionService [http-nio-8086-exec-3] Successfully embedded and stored chunks in ChromaDB.
+2026-05-18 11:56:35,707 INFO c.a.s.controller.RagController [http-nio-8086-exec-2] REST request to query pipeline with: Tell me something about Aritra Basak.
+2026-05-18 11:56:35,708 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] === Starting Self-Correcting RAG Pipeline for query: 'Tell me something about Aritra Basak.' ===
+2026-05-18 11:56:35,708 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] Step 1: Retrieving relevant documents...
+2026-05-18 11:56:37,801 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] Step 2: Guardrail Agent evaluating relevance...
+2026-05-18 11:57:01,267 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] Guardrail Decision: YES
+2026-05-18 11:57:01,268 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] Step 3: Generator Agent drafting answer...
+2026-05-18 11:58:02,210 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] Step 4: Evaluator Agent checking for factual consistency...
+2026-05-18 11:58:44,182 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] Evaluator Decision: YES
+2026-05-18 11:58:44,183 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] === Pipeline Completed Successfully ===
+2026-05-18 11:59:31,749 INFO c.a.s.controller.RagController [http-nio-8086-exec-6] REST request to query pipeline with: In Brief tell me something about Aritra Basak.
+2026-05-18 11:59:31,749 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-6] === Starting Self-Correcting RAG Pipeline for query: 'In Brief tell me something about Aritra Basak.' ===
+2026-05-18 11:59:31,749 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-6] Step 1: Retrieving relevant documents...
+2026-05-18 11:59:34,765 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-6] Step 2: Guardrail Agent evaluating relevance...
+2026-05-18 11:59:47,540 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-6] Guardrail Decision: YES
+2026-05-18 11:59:47,541 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-6] Step 3: Generator Agent drafting answer...
+2026-05-18 12:00:15,128 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-6] Step 4: Evaluator Agent checking for factual consistency...
+2026-05-18 12:00:41,852 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-6] Evaluator Decision: YES
+2026-05-18 12:00:41,852 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-6] === Pipeline Completed Successfully ===
+2026-05-18 12:06:04,529 INFO c.a.s.controller.RagController [http-nio-8086-exec-9] REST request to query pipeline with: Where do Aritra live?
+2026-05-18 12:06:04,529 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-9] === Starting Self-Correcting RAG Pipeline for query: 'Where do Aritra live?' ===
+2026-05-18 12:06:04,529 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-9] Step 1: Retrieving relevant documents...
+2026-05-18 12:06:05,658 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-9] Step 2: Guardrail Agent evaluating relevance...
+2026-05-18 12:06:27,154 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-9] Guardrail Decision: YES
+2026-05-18 12:06:27,154 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-9] Step 3: Generator Agent drafting answer...
+2026-05-18 12:06:37,193 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-9] Step 4: Evaluator Agent checking for factual consistency...
+2026-05-18 12:06:54,349 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-9] Evaluator Decision: YES
+2026-05-18 12:06:54,349 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-9] === Pipeline Completed Successfully ===
+2026-05-18 12:45:48,483 INFO c.a.s.controller.RagController [http-nio-8086-exec-3] REST request to query pipeline with: Generate a small within 200 words prompt based on Aritra's experience and skill that can be used in Linked In Opening Message for enquiring people about any Java backend or full stack focused role and looking forward to connect with them
+2026-05-18 12:45:48,485 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-3] === Starting Self-Correcting RAG Pipeline for query: 'Generate a small within 200 words prompt based on Aritra's experience and skill that can be used in Linked In Opening Message for enquiring people about any Java backend or full stack focused role and looking forward to connect with them' ===
+2026-05-18 12:45:48,485 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-3] Step 1: Retrieving relevant documents...
+2026-05-18 12:45:50,022 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-3] Step 2: Guardrail Agent evaluating relevance...
+2026-05-18 12:46:28,571 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-3] Guardrail Decision: YES
+2026-05-18 12:46:28,572 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-3] Step 3: Generator Agent drafting answer...
+2026-05-18 12:46:55,049 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-3] Step 4: Evaluator Agent checking for factual consistency...
+2026-05-18 12:47:43,801 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-3] Evaluator Decision: YES
+2026-05-18 12:47:43,802 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-3] === Pipeline Completed Successfully ===
+2026-05-18 12:49:21,243 INFO c.a.s.controller.RagController [http-nio-8086-exec-2] REST request to query pipeline with: Generate a small within 200 words prompt based on Aritra's experience and skill that can be used in Linked In Opening Message for enquiring people about any Java backend, also you can add my Spring Boot integrated with AI or full stack focused role and looking forward to connect with them. Should be within or = 200 words.
+2026-05-18 12:49:21,243 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] === Starting Self-Correcting RAG Pipeline for query: 'Generate a small within 200 words prompt based on Aritra's experience and skill that can be used in Linked In Opening Message for enquiring people about any Java backend, also you can add my Spring Boot integrated with AI or full stack focused role and looking forward to connect with them. Should be within or = 200 words.' ===
+2026-05-18 12:49:21,243 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] Step 1: Retrieving relevant documents...
+2026-05-18 12:49:22,651 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] Step 2: Guardrail Agent evaluating relevance...
+2026-05-18 12:49:51,178 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] Guardrail Decision: YES
+2026-05-18 12:49:51,185 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] Step 3: Generator Agent drafting answer...
+2026-05-18 12:50:28,887 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] Step 4: Evaluator Agent checking for factual consistency...
+2026-05-18 12:51:13,990 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] Evaluator Decision: YES
+2026-05-18 12:51:13,992 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-2] === Pipeline Completed Successfully ===
+2026-05-18 12:52:42,485 INFO c.a.s.controller.RagController [http-nio-8086-exec-8] REST request to query pipeline with: Generate a small within 200 words prompt based on Aritra's experience and skill that can be used in Linked In Opening Message for enquiring people about any Java backend, also you can add my Spring Boot integrated with AI but mainly focus on my Java + Spring Boot Backend skills (for example Optimistic Locking, all these) or full stack focused role and looking forward to connect with them. Should be within or = 200 words.
+2026-05-18 12:52:42,485 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-8] === Starting Self-Correcting RAG Pipeline for query: 'Generate a small within 200 words prompt based on Aritra's experience and skill that can be used in Linked In Opening Message for enquiring people about any Java backend, also you can add my Spring Boot integrated with AI but mainly focus on my Java + Spring Boot Backend skills (for example Optimistic Locking, all these) or full stack focused role and looking forward to connect with them. Should be within or = 200 words.' ===
+2026-05-18 12:52:42,485 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-8] Step 1: Retrieving relevant documents...
+2026-05-18 12:52:42,696 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-8] Step 2: Guardrail Agent evaluating relevance...
+2026-05-18 12:53:05,061 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-8] Guardrail Decision: YES
+2026-05-18 12:53:05,061 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-8] Step 3: Generator Agent drafting answer...
+2026-05-18 12:53:30,758 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-8] Step 4: Evaluator Agent checking for factual consistency...
+2026-05-18 12:54:18,210 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-8] Evaluator Decision: YES
+2026-05-18 12:54:18,210 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-8] === Pipeline Completed Successfully ===
+2026-05-18 12:59:38,233 INFO o.s.b.w.e.tomcat.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-18 12:59:38,478 INFO o.s.b.w.e.tomcat.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-05-18 19:00:42,682 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] Starting SelfCorrectingRagApplication using Java 17.0.15 with PID 6248 (C:\Projects\Personal\selfCorrectingRag\target\classes started by basak in C:\Projects\Personal\selfCorrectingRag)
+2026-05-18 19:00:42,685 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2026-05-18 19:00:42,735 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-05-18 19:00:42,736 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-05-18 19:00:43,909 INFO o.s.b.w.e.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port 8086 (http)
+2026-05-18 19:00:43,918 INFO o.a.coyote.http11.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8086"]
+2026-05-18 19:00:43,919 INFO o.a.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2026-05-18 19:00:43,920 INFO o.a.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-05-18 19:00:43,971 INFO o.a.c.c.C.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2026-05-18 19:00:43,971 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1235 ms
+2026-05-18 19:00:44,942 WARN o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'ragController' defined in file [C:\Projects\Personal\selfCorrectingRag\target\classes\com\ai\selfCorrectingRag\controller\RagController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'documentIngestionService' defined in file [C:\Projects\Personal\selfCorrectingRag\target\classes\com\ai\selfCorrectingRag\service\DocumentIngestionService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'vectorStore' defined in class path resource [org/springframework/ai/vectorstore/chroma/autoconfigure/ChromaVectorStoreAutoConfiguration.class]: I/O error on GET request for "http://localhost:8000/api/v2/tenants/SpringAiTenant/databases/SpringAiDatabase/collections/SpringAiCollection": Connection refused: no further information: localhost/127.0.0.1:8000
+2026-05-18 19:00:44,945 INFO o.a.catalina.core.StandardService [restartedMain] Stopping service [Tomcat]
+2026-05-18 19:00:44,955 INFO o.s.b.a.l.ConditionEvaluationReportLogger [restartedMain] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-05-18 19:00:44,973 ERROR o.s.boot.SpringApplication [restartedMain] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'ragController' defined in file [C:\Projects\Personal\selfCorrectingRag\target\classes\com\ai\selfCorrectingRag\controller\RagController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'documentIngestionService' defined in file [C:\Projects\Personal\selfCorrectingRag\target\classes\com\ai\selfCorrectingRag\service\DocumentIngestionService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'vectorStore' defined in class path resource [org/springframework/ai/vectorstore/chroma/autoconfigure/ChromaVectorStoreAutoConfiguration.class]: I/O error on GET request for "http://localhost:8000/api/v2/tenants/SpringAiTenant/databases/SpringAiDatabase/collections/SpringAiCollection": Connection refused: no further information: localhost/127.0.0.1:8000
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1228)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1194)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1130)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:991)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:628)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.ai.selfCorrectingRag.SelfCorrectingRagApplication.main(SelfCorrectingRagApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentIngestionService' defined in file [C:\Projects\Personal\selfCorrectingRag\target\classes\com\ai\selfCorrectingRag\service\DocumentIngestionService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'vectorStore' defined in class path resource [org/springframework/ai/vectorstore/chroma/autoconfigure/ChromaVectorStoreAutoConfiguration.class]: I/O error on GET request for "http://localhost:8000/api/v2/tenants/SpringAiTenant/databases/SpringAiDatabase/collections/SpringAiCollection": Connection refused: no further information: localhost/127.0.0.1:8000
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 26 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorStore' defined in class path resource [org/springframework/ai/vectorstore/chroma/autoconfigure/ChromaVectorStoreAutoConfiguration.class]: I/O error on GET request for "http://localhost:8000/api/v2/tenants/SpringAiTenant/databases/SpringAiDatabase/collections/SpringAiCollection": Connection refused: no further information: localhost/127.0.0.1:8000
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1708)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 40 common frames omitted
+Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:8000/api/v2/tenants/SpringAiTenant/databases/SpringAiDatabase/collections/SpringAiCollection": Connection refused: no further information: localhost/127.0.0.1:8000
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.createResourceAccessException(DefaultRestClient.java:704)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:589)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchange(DefaultRestClient.java:540)
+	at org.springframework.web.client.RestClient$RequestHeadersSpec.exchange(RestClient.java:677)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.executeAndExtract(DefaultRestClient.java:821)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.body(DefaultRestClient.java:757)
+	at org.springframework.ai.chroma.vectorstore.ChromaApi.getCollection(ChromaApi.java:229)
+	at org.springframework.ai.chroma.vectorstore.ChromaVectorStore.afterPropertiesSet(ChromaVectorStore.java:120)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822)
+	... 50 common frames omitted
+Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:8000
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:336)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:339)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:784)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:732)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:658)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2026-05-18 19:13:51,818 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] Starting SelfCorrectingRagApplication using Java 17.0.15 with PID 29836 (C:\Projects\Personal\selfCorrectingRag\target\classes started by basak in C:\Projects\Personal\selfCorrectingRag)
+2026-05-18 19:13:51,820 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2026-05-18 19:13:51,869 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-05-18 19:13:51,869 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-05-18 19:13:53,002 INFO o.s.b.w.e.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port 8086 (http)
+2026-05-18 19:13:53,011 INFO o.a.coyote.http11.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8086"]
+2026-05-18 19:13:53,013 INFO o.a.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2026-05-18 19:13:53,014 INFO o.a.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-05-18 19:13:53,064 INFO o.a.c.c.C.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2026-05-18 19:13:53,065 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1195 ms
+2026-05-18 19:13:53,984 DEBUG o.s.a.m.t.a.ToolCallingAutoConfiguration [restartedMain] Cannot load class: org.springframework.security.oauth2.client.ClientAuthorizationException
+2026-05-18 19:13:54,170 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2026-05-18 19:13:54,179 INFO o.a.coyote.http11.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8086"]
+2026-05-18 19:13:54,187 INFO o.s.b.w.e.tomcat.TomcatWebServer [restartedMain] Tomcat started on port 8086 (http) with context path '/'
+2026-05-18 19:13:54,195 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] Started SelfCorrectingRagApplication in 3.0 seconds (process running for 3.635)
+2026-05-18 19:14:46,162 INFO o.a.c.c.C.[Tomcat].[localhost].[/] [http-nio-8086-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-18 19:14:46,162 INFO o.s.web.servlet.DispatcherServlet [http-nio-8086-exec-2] Initializing Servlet 'dispatcherServlet'
+2026-05-18 19:14:46,162 INFO o.s.web.servlet.DispatcherServlet [http-nio-8086-exec-2] Completed initialization in 0 ms
+2026-05-18 19:14:46,204 INFO c.a.s.controller.RagController [http-nio-8086-exec-2] REST request to upload file: AritraBasak_CV.pdf
+2026-05-18 19:14:46,205 INFO c.a.s.s.DocumentIngestionService [http-nio-8086-exec-2] Starting ingestion for file: AritraBasak_CV.pdf
+2026-05-18 19:14:47,061 INFO c.a.s.s.DocumentIngestionService [http-nio-8086-exec-2] Extracted 1 raw documents.
+2026-05-18 19:14:47,151 INFO o.s.a.t.splitter.TextSplitter [http-nio-8086-exec-2] Splitting up document into 2 chunks.
+2026-05-18 19:14:47,152 INFO c.a.s.s.DocumentIngestionService [http-nio-8086-exec-2] Split into 2 chunks for embedding.
+2026-05-18 19:14:47,212 ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] [http-nio-8086-exec-2] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:11434/api/embed": Connection refused: no further information: localhost/127.0.0.1:11434] with root cause
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:336)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:339)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:784)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:732)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:658)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2026-05-18 19:16:01,341 INFO c.a.s.controller.RagController [http-nio-8086-exec-4] REST request to upload file: AritraBasak_CV.pdf
+2026-05-18 19:16:01,341 INFO c.a.s.s.DocumentIngestionService [http-nio-8086-exec-4] Starting ingestion for file: AritraBasak_CV.pdf
+2026-05-18 19:16:01,393 INFO c.a.s.s.DocumentIngestionService [http-nio-8086-exec-4] Extracted 1 raw documents.
+2026-05-18 19:16:01,475 INFO o.s.a.t.splitter.TextSplitter [http-nio-8086-exec-4] Splitting up document into 2 chunks.
+2026-05-18 19:16:01,475 INFO c.a.s.s.DocumentIngestionService [http-nio-8086-exec-4] Split into 2 chunks for embedding.
+2026-05-18 19:16:02,609 INFO c.a.s.s.DocumentIngestionService [http-nio-8086-exec-4] Successfully embedded and stored chunks in ChromaDB.
+2026-05-18 19:16:12,842 INFO c.a.s.controller.RagController [http-nio-8086-exec-5] REST request to query pipeline with: Where do Aritra live?
+2026-05-18 19:16:12,842 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] === Starting Self-Correcting RAG Pipeline for query: 'Where do Aritra live?' ===
+2026-05-18 19:16:12,842 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] Step 1: Retrieving relevant documents...
+2026-05-18 19:16:13,009 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] Step 2: Guardrail Agent evaluating relevance...
+2026-05-18 19:16:25,860 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] Guardrail Decision: YES
+2026-05-18 19:16:25,860 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] Step 3: Generator Agent drafting answer (Attempt 1 of 3)
+2026-05-18 19:16:38,178 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] Step 4: Evaluator Agent checking for factual consistency...
+2026-05-18 19:16:52,222 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] Evaluator Decision (Attempt 1): YES
+2026-05-18 19:16:52,222 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] === Pipeline Completed Successfully on attempt 1 ===
+2026-05-18 19:17:56,938 INFO c.a.s.controller.RagController [http-nio-8086-exec-8] REST request to query pipeline with: Where is Nike?
+2026-05-18 19:17:56,938 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-8] === Starting Self-Correcting RAG Pipeline for query: 'Where is Nike?' ===
+2026-05-18 19:17:56,938 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-8] Step 1: Retrieving relevant documents...
+2026-05-18 19:17:58,383 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-8] Step 2: Guardrail Agent evaluating relevance...
+2026-05-18 19:18:10,426 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-8] Guardrail Decision: NO
+2026-05-18 19:18:36,803 INFO c.a.s.controller.RagController [http-nio-8086-exec-9] REST request to query pipeline with: Who is Michael Bay?
+2026-05-18 19:18:36,803 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-9] === Starting Self-Correcting RAG Pipeline for query: 'Who is Michael Bay?' ===
+2026-05-18 19:18:36,803 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-9] Step 1: Retrieving relevant documents...
+2026-05-18 19:18:36,919 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-9] Step 2: Guardrail Agent evaluating relevance...
+2026-05-18 19:18:45,764 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-9] Guardrail Decision: NO
+2026-05-18 19:19:11,822 INFO c.a.s.controller.RagController [http-nio-8086-exec-6] REST request to query pipeline with: What is the total yeo of Aritra ?
+2026-05-18 19:19:11,822 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-6] === Starting Self-Correcting RAG Pipeline for query: 'What is the total yeo of Aritra ?' ===
+2026-05-18 19:19:11,822 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-6] Step 1: Retrieving relevant documents...
+2026-05-18 19:19:11,958 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-6] Step 2: Guardrail Agent evaluating relevance...
+2026-05-18 19:19:24,427 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-6] Guardrail Decision: NO
+2026-05-18 19:19:38,475 INFO c.a.s.controller.RagController [http-nio-8086-exec-1] REST request to query pipeline with: What is the total years of experience of Aritra ?
+2026-05-18 19:19:38,476 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-1] === Starting Self-Correcting RAG Pipeline for query: 'What is the total years of experience of Aritra ?' ===
+2026-05-18 19:19:38,476 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-1] Step 1: Retrieving relevant documents...
+2026-05-18 19:19:40,282 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-1] Step 2: Guardrail Agent evaluating relevance...
+2026-05-18 19:19:53,728 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-1] Guardrail Decision: YES
+2026-05-18 19:19:53,729 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-1] Step 3: Generator Agent drafting answer (Attempt 1 of 3)
+2026-05-18 19:20:09,018 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-1] Step 4: Evaluator Agent checking for factual consistency...
+2026-05-18 19:20:20,557 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-1] Evaluator Decision (Attempt 1): YES
+2026-05-18 19:20:20,557 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-1] === Pipeline Completed Successfully on attempt 1 ===
+2026-05-18 19:24:15,899 INFO c.a.s.controller.RagController [http-nio-8086-exec-4] REST request to query pipeline with: With all the information regarding the experience and skills of Aritra write an opening message within 200 words for sending to Linkedin Connections regarding any position available in their company. Mainly focus on the skills in Backend with the Spring Boot and then briefly tell about Spring + AI and Gen AI
+2026-05-18 19:24:15,900 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] === Starting Self-Correcting RAG Pipeline for query: 'With all the information regarding the experience and skills of Aritra write an opening message within 200 words for sending to Linkedin Connections regarding any position available in their company. Mainly focus on the skills in Backend with the Spring Boot and then briefly tell about Spring + AI and Gen AI' ===
+2026-05-18 19:24:15,900 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Step 1: Retrieving relevant documents...
+2026-05-18 19:24:16,046 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Step 2: Guardrail Agent evaluating relevance...
+2026-05-18 19:24:31,829 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Guardrail Decision: YES
+2026-05-18 19:24:31,829 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Step 3: Generator Agent drafting answer (Attempt 1 of 3)
+2026-05-18 19:25:03,662 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Step 4: Evaluator Agent checking for factual consistency...
+2026-05-18 19:25:29,342 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Evaluator Decision (Attempt 1): YES
+2026-05-18 19:25:29,342 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] === Pipeline Completed Successfully on attempt 1 ===

@@ -1,0 +1,17 @@
+server:
+  port: 8086
+
+spring:
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: gemma4:e4b
+      embedding:
+        model: nomic-embed-text
+    vectorstore:
+      chroma:
+        initialize-schema: true
+        client:
+          host: http://localhost
+          port: 8000
