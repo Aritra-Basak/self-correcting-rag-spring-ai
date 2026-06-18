@@ -70,7 +70,7 @@ sequenceDiagram
         Guard-->>API: Return "YES"
         
         %% Start loop for generation
-        loop Self-Correction (Max Retries = 3)
+        loop Self-Correction (Max Retries = 2)
             API->>Gen: Draft Response (Context-Bounded Prompt)
             Gen-->>API: Return Generated Draft Answer
             
