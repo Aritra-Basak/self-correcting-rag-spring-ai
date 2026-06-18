@@ -91,7 +91,7 @@ sequenceDiagram
 
 * **Guardrail Agent (Relevance Check):** Intercepts out-of-domain or malicious prompts. If the context retrieved from the database cannot truthfully answer the user's question, the pipeline is immediately halted to stop the model from making up information.
 * **Generator Agent (Contextual Adaptation):** Focuses the LLM (`gemma4:e4b`) entirely on the retrieved data window to synthesize a clean response.
-* **Evaluator Agent (Anti-Hallucination Loop):** Acts as a strict gatekeeper by evaluating the generated answer against the raw ground-truth source blocks. If it detects outside knowledge or hallucinations, it updates the state, alters the system prompt instructions, and forces a recalculation up to a maximum of 3 times.
+* **Evaluator Agent (Anti-Hallucination Loop):** Acts as a strict gatekeeper by evaluating the generated answer against the raw ground-truth source blocks. If it detects outside knowledge or hallucinations, it updates the state, alters the system prompt instructions, and forces a recalculation up to a maximum of 2 times.
 
 ---
 
