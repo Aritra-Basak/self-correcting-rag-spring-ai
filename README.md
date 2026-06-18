@@ -99,14 +99,15 @@ sequenceDiagram
 
 ## 🛠️ Tech Stack & Prerequisites
 
-| Technology | Purpose | Version |
-| :--- | :--- | :--- |
-| **Java** | Core Programming Language | 17+ |
-| **Spring Boot** | Enterprise Application Framework | 3.5.x |
-| **Spring AI** | Fluent AI/LLM & Vector Database Orchestration | 1.1.6 |
-| **Ollama** | Local LLM & Embedding Inference Engine | Latest |
-| **ChromaDB** | Vector Database Storage | Latest |
-| **Docker / WSL2** | Isolated Infrastructure Management | Latest |
+| Technology                  | Purpose                                       | Version |
+|:----------------------------|:----------------------------------------------|:--------|
+| **Java**                    | Core Programming Language                     | 17+     |
+| **Spring Boot**             | Enterprise Application Framework              | 3.5.x   |
+| **Spring AI**               | Fluent AI/LLM & Vector Database Orchestration | 1.1.6   |
+| **Spring OAuth 2 Security** | Provides security via OAuth 2 mechanism       | Latest  |
+| **Ollama**                  | Local LLM & Embedding Inference Engine        | Latest  |
+| **ChromaDB**                | Vector Database Storage                       | Latest  |
+| **Docker / WSL2**           | Isolated Infrastructure Management            | Latest  |
 
 ---
 
