@@ -6,13 +6,11 @@ A production-grade, agentic **Retrieval-Augmented Generation (RAG)** pipeline bu
 
 ## 🏗️ System Architecture & Workflow
 
-## 🔐 Security & Authentication (GitHub OAuth2)
+### 🔐 Security & Authentication (GitHub OAuth2)
 
 To ensure the RAG workspace remains secure and access-controlled, the application integrates **Spring Security** with **GitHub OAuth2** for seamless, passwordless authentication.
 
 Unauthenticated users are greeted by a minimalistic public landing page. Upon clicking the login trigger, the system initiates the OAuth 2.0 authorization code flow. Once authenticated, Spring Security establishes a secure session (with CSRF protection enabled for the SPA) and seamlessly transitions the UI into the private RAG chat workspace.
-
-### Authentication Workflow
 
 ```mermaid
 sequenceDiagram
@@ -41,6 +39,8 @@ sequenceDiagram
     Sec-->>UI: Return GitHub Username (200 OK)
     UI-->>User: Display Authenticated Chat Interface
 ```
+### 🧠 Agentic Layer Breakdown
+
 Standard RAG architectures blindly trust whatever context is retrieved from a vector database, often leading to off-topic answers or hallucinations. This system introduces an intelligent, multi-agent validation loop to enforce data reliability before an answer ever reaches the client.
 
 ```mermaid
@@ -89,8 +89,6 @@ sequenceDiagram
     end
 ```
 
-
-### 🧠 Agentic Layer Breakdown
 * **Guardrail Agent (Relevance Check):** Intercepts out-of-domain or malicious prompts. If the context retrieved from the database cannot truthfully answer the user's question, the pipeline is immediately halted to stop the model from making up information.
 * **Generator Agent (Contextual Adaptation):** Focuses the LLM (`gemma4:e4b`) entirely on the retrieved data window to synthesize a clean response.
 * **Evaluator Agent (Anti-Hallucination Loop):** Acts as a strict gatekeeper by evaluating the generated answer against the raw ground-truth source blocks. If it detects outside knowledge or hallucinations, it updates the state, alters the system prompt instructions, and forces a recalculation up to a maximum of 3 times.
