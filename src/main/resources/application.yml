@@ -2,6 +2,13 @@ server:
   port: 8086
 
 spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: Create a client ID
+            client-secret: Fetch you client secret from Github and paste here
   ai:
     ollama:
       base-url: http://localhost:11434

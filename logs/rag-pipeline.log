@@ -1,2 +1,349 @@
-2026-05-19 12:40:27,395 INFO o.s.b.w.e.tomcat.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
-2026-05-19 12:40:27,582 INFO o.s.b.w.e.tomcat.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-06-18 16:22:02,541 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] Starting SelfCorrectingRagApplication using Java 17.0.15 with PID 23244 (C:\Projects\Personal\selfCorrectingRag\target\classes started by basak in C:\Projects\Personal\selfCorrectingRag)
+2026-06-18 16:22:02,551 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2026-06-18 16:22:02,659 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-18 16:22:02,661 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-18 16:22:05,823 INFO o.s.b.w.e.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port 8086 (http)
+2026-06-18 16:22:05,855 INFO o.a.coyote.http11.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8086"]
+2026-06-18 16:22:05,860 INFO o.a.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2026-06-18 16:22:05,860 INFO o.a.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-06-18 16:22:06,038 INFO o.a.c.c.C.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2026-06-18 16:22:06,042 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 3377 ms
+2026-06-18 16:22:08,723 WARN o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'ragController' defined in file [C:\Projects\Personal\selfCorrectingRag\target\classes\com\ai\selfCorrectingRag\controller\RagController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'documentIngestionService' defined in file [C:\Projects\Personal\selfCorrectingRag\target\classes\com\ai\selfCorrectingRag\service\DocumentIngestionService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'vectorStore' defined in class path resource [org/springframework/ai/vectorstore/chroma/autoconfigure/ChromaVectorStoreAutoConfiguration.class]: I/O error on GET request for "http://localhost:8000/api/v2/tenants/SpringAiTenant/databases/SpringAiDatabase/collections/SpringAiCollection": Connection refused: no further information: localhost/127.0.0.1:8000
+2026-06-18 16:22:08,729 INFO o.a.catalina.core.StandardService [restartedMain] Stopping service [Tomcat]
+2026-06-18 16:22:08,752 INFO o.s.b.a.l.ConditionEvaluationReportLogger [restartedMain] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-06-18 16:22:08,790 ERROR o.s.boot.SpringApplication [restartedMain] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'ragController' defined in file [C:\Projects\Personal\selfCorrectingRag\target\classes\com\ai\selfCorrectingRag\controller\RagController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'documentIngestionService' defined in file [C:\Projects\Personal\selfCorrectingRag\target\classes\com\ai\selfCorrectingRag\service\DocumentIngestionService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'vectorStore' defined in class path resource [org/springframework/ai/vectorstore/chroma/autoconfigure/ChromaVectorStoreAutoConfiguration.class]: I/O error on GET request for "http://localhost:8000/api/v2/tenants/SpringAiTenant/databases/SpringAiDatabase/collections/SpringAiCollection": Connection refused: no further information: localhost/127.0.0.1:8000
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1228)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1194)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1130)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:991)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:628)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.ai.selfCorrectingRag.SelfCorrectingRagApplication.main(SelfCorrectingRagApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentIngestionService' defined in file [C:\Projects\Personal\selfCorrectingRag\target\classes\com\ai\selfCorrectingRag\service\DocumentIngestionService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'vectorStore' defined in class path resource [org/springframework/ai/vectorstore/chroma/autoconfigure/ChromaVectorStoreAutoConfiguration.class]: I/O error on GET request for "http://localhost:8000/api/v2/tenants/SpringAiTenant/databases/SpringAiDatabase/collections/SpringAiCollection": Connection refused: no further information: localhost/127.0.0.1:8000
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 26 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorStore' defined in class path resource [org/springframework/ai/vectorstore/chroma/autoconfigure/ChromaVectorStoreAutoConfiguration.class]: I/O error on GET request for "http://localhost:8000/api/v2/tenants/SpringAiTenant/databases/SpringAiDatabase/collections/SpringAiCollection": Connection refused: no further information: localhost/127.0.0.1:8000
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1708)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 40 common frames omitted
+Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:8000/api/v2/tenants/SpringAiTenant/databases/SpringAiDatabase/collections/SpringAiCollection": Connection refused: no further information: localhost/127.0.0.1:8000
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.createResourceAccessException(DefaultRestClient.java:704)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:589)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchange(DefaultRestClient.java:540)
+	at org.springframework.web.client.RestClient$RequestHeadersSpec.exchange(RestClient.java:677)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.executeAndExtract(DefaultRestClient.java:821)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.body(DefaultRestClient.java:757)
+	at org.springframework.ai.chroma.vectorstore.ChromaApi.getCollection(ChromaApi.java:229)
+	at org.springframework.ai.chroma.vectorstore.ChromaVectorStore.afterPropertiesSet(ChromaVectorStore.java:120)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822)
+	... 50 common frames omitted
+Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:8000
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:336)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:339)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:784)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:732)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:658)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2026-06-18 16:24:00,826 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] Starting SelfCorrectingRagApplication using Java 17.0.15 with PID 42904 (C:\Projects\Personal\selfCorrectingRag\target\classes started by basak in C:\Projects\Personal\selfCorrectingRag)
+2026-06-18 16:24:00,831 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2026-06-18 16:24:00,932 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-18 16:24:00,932 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-18 16:24:03,176 INFO o.s.b.w.e.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port 8086 (http)
+2026-06-18 16:24:03,195 INFO o.a.coyote.http11.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8086"]
+2026-06-18 16:24:03,198 INFO o.a.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2026-06-18 16:24:03,199 INFO o.a.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-06-18 16:24:03,294 INFO o.a.c.c.C.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2026-06-18 16:24:03,296 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2362 ms
+2026-06-18 16:24:05,396 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [restartedMain] Adding welcome page: class path resource [static/index.html]
+2026-06-18 16:24:06,179 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2026-06-18 16:24:06,206 INFO o.a.coyote.http11.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8086"]
+2026-06-18 16:24:06,231 INFO o.s.b.w.e.tomcat.TomcatWebServer [restartedMain] Tomcat started on port 8086 (http) with context path '/'
+2026-06-18 16:24:06,248 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] Started SelfCorrectingRagApplication in 6.516 seconds (process running for 7.558)
+2026-06-18 16:26:02,550 INFO o.a.c.c.C.[Tomcat].[localhost].[/] [http-nio-8086-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-18 16:26:02,551 INFO o.s.web.servlet.DispatcherServlet [http-nio-8086-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-06-18 16:26:02,555 INFO o.s.web.servlet.DispatcherServlet [http-nio-8086-exec-1] Completed initialization in 4 ms
+2026-06-18 16:37:32,364 INFO o.s.b.w.e.tomcat.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-18 16:37:32,642 INFO o.s.b.w.e.tomcat.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-06-18 16:37:37,077 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] Starting SelfCorrectingRagApplication using Java 17.0.15 with PID 41956 (C:\Projects\Personal\selfCorrectingRag\target\classes started by basak in C:\Projects\Personal\selfCorrectingRag)
+2026-06-18 16:37:37,083 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2026-06-18 16:37:37,274 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-18 16:37:37,274 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-18 16:37:40,136 INFO o.s.b.w.e.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port 8086 (http)
+2026-06-18 16:37:40,155 INFO o.a.coyote.http11.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8086"]
+2026-06-18 16:37:40,158 INFO o.a.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2026-06-18 16:37:40,159 INFO o.a.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-06-18 16:37:40,261 INFO o.a.c.c.C.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2026-06-18 16:37:40,265 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2986 ms
+2026-06-18 16:37:42,741 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [restartedMain] Adding welcome page: class path resource [static/index.html]
+2026-06-18 16:37:43,528 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2026-06-18 16:37:43,563 INFO o.a.coyote.http11.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8086"]
+2026-06-18 16:37:43,592 INFO o.s.b.w.e.tomcat.TomcatWebServer [restartedMain] Tomcat started on port 8086 (http) with context path '/'
+2026-06-18 16:37:43,617 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] Started SelfCorrectingRagApplication in 7.852 seconds (process running for 9.276)
+2026-06-18 16:37:50,273 INFO o.a.c.c.C.[Tomcat].[localhost].[/] [http-nio-8086-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-18 16:37:50,273 INFO o.s.web.servlet.DispatcherServlet [http-nio-8086-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-06-18 16:37:50,273 INFO o.s.web.servlet.DispatcherServlet [http-nio-8086-exec-1] Completed initialization in 0 ms
+2026-06-18 16:38:10,935 WARN o.a.c.util.SessionIdGeneratorBase [http-nio-8086-exec-4] Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [233] milliseconds.
+2026-06-18 16:45:11,204 INFO o.s.b.w.e.tomcat.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-18 16:45:11,444 INFO o.s.b.w.e.tomcat.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-06-18 16:45:18,521 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] Starting SelfCorrectingRagApplication using Java 17.0.15 with PID 14160 (C:\Projects\Personal\selfCorrectingRag\target\classes started by basak in C:\Projects\Personal\selfCorrectingRag)
+2026-06-18 16:45:18,529 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2026-06-18 16:45:18,659 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-18 16:45:18,659 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-18 16:45:21,826 INFO o.s.b.w.e.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port 8086 (http)
+2026-06-18 16:45:21,903 INFO o.a.coyote.http11.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8086"]
+2026-06-18 16:45:21,909 INFO o.a.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2026-06-18 16:45:21,918 INFO o.a.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-06-18 16:45:22,174 INFO o.a.c.c.C.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2026-06-18 16:45:22,176 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 3506 ms
+2026-06-18 16:45:27,003 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [restartedMain] Adding welcome page: class path resource [static/index.html]
+2026-06-18 16:45:28,888 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2026-06-18 16:45:28,962 INFO o.a.coyote.http11.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8086"]
+2026-06-18 16:45:29,006 INFO o.s.b.w.e.tomcat.TomcatWebServer [restartedMain] Tomcat started on port 8086 (http) with context path '/'
+2026-06-18 16:45:29,049 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] Started SelfCorrectingRagApplication in 11.77 seconds (process running for 13.145)
+2026-06-18 16:47:28,116 INFO o.a.c.c.C.[Tomcat].[localhost].[/] [http-nio-8086-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-18 16:47:28,116 INFO o.s.web.servlet.DispatcherServlet [http-nio-8086-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-06-18 16:47:28,121 INFO o.s.web.servlet.DispatcherServlet [http-nio-8086-exec-1] Completed initialization in 5 ms
+2026-06-18 16:47:32,748 WARN o.a.c.util.SessionIdGeneratorBase [http-nio-8086-exec-5] Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [212] milliseconds.
+2026-06-18 16:48:04,858 INFO c.a.s.controller.RagController [http-nio-8086-exec-2] REST request to upload file: AritraBasak_CV.pdf
+2026-06-18 16:48:04,866 INFO c.a.s.s.DocumentIngestionService [http-nio-8086-exec-2] Starting ingestion for file: AritraBasak_CV.pdf
+2026-06-18 16:48:08,562 INFO c.a.s.s.DocumentIngestionService [http-nio-8086-exec-2] Extracted 1 raw documents.
+2026-06-18 16:48:08,939 INFO o.s.a.t.splitter.TextSplitter [http-nio-8086-exec-2] Splitting up document into 2 chunks.
+2026-06-18 16:48:08,963 INFO c.a.s.s.DocumentIngestionService [http-nio-8086-exec-2] Split into 2 chunks for embedding.
+2026-06-18 16:48:11,788 INFO c.a.s.s.DocumentIngestionService [http-nio-8086-exec-2] Successfully embedded and stored chunks in ChromaDB.
+2026-06-18 16:48:21,271 INFO c.a.s.controller.RagController [http-nio-8086-exec-4] REST request to query pipeline with: who is aritra basak
+2026-06-18 16:48:21,273 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] === Starting Self-Correcting RAG Pipeline for query: 'who is aritra basak' ===
+2026-06-18 16:48:21,273 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Step 1: Retrieving relevant documents...
+2026-06-18 16:48:24,558 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Step 2: Guardrail Agent evaluating relevance...
+2026-06-18 16:49:03,561 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Guardrail Decision: YES
+2026-06-18 16:49:03,561 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Step 3: Generator Agent drafting answer (Attempt 1 of 3)
+2026-06-18 16:50:08,398 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Step 4: Evaluator Agent checking for factual consistency...
+2026-06-18 16:51:06,325 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Evaluator Decision (Attempt 1): THE PROVIDED PROFILE IS HIGHLY TECHNICAL AND ACHIEVEMENT-ORIENTED, MAKING IT SUITABLE FOR ROLES SUCH AS **SOFTWARE ENGINEER**, **BACKEND DEVELOPER**, OR **SOLUTIONS ARCHITECT**.
+
+TO CREATE THE BEST POSSIBLE SUMMARY, I WILL STRUCTURE THE OUTPUT INTO A CONCISE **PROFESSIONAL SUMMARY** (FOR THE TOP OF THE RESUME) AND CATEGORIZE THE SKILLS EFFECTIVELY.
+
+HERE ARE THREE OPTIONS BASED ON THE DESIRED TONE: **(1) TECHNICAL EXPERT FOCUS**, **(2) IMPACT/RESULTS FOCUS**, OR **(3) GENERALIST/VERSATILE FOCUS**.
+
+---
+
+## 🎯 OPTION 1: TECHNICAL EXPERT FOCUS (BEST FOR BACKEND/ARCHITECTURE ROLES)
+
+THIS OPTION EMPHASIZES THE TECHNOLOGIES AND ARCHITECTURAL DEPTH.
+
+**🚀 PROFESSIONAL SUMMARY**
+
+HIGHLY ACCOMPLISHED AND DETAIL-ORIENTED SOFTWARE ENGINEER WITH [X YEARS] OF EXPERIENCE SPECIALIZING IN BUILDING ROBUST, SCALABLE, AND HIGH-THROUGHPUT ENTERPRISE APPLICATIONS. EXPERT IN THE **JAVA/SPRING BOOT ECOSYSTEM** AND MICROSERVICES ARCHITECTURE, WITH PROVEN SUCCESS IN TRANSFORMING COMPLEX BUSINESS REQUIREMENTS INTO RELIABLE, PRODUCTION-GRADE SOLUTIONS. PROFICIENT ACROSS THE FULL STACK, WITH DEEP EXPERIENCE IN CLOUD INTEGRATION, ADVANCED DATA PROCESSING, AND IMPLEMENTING COMPLEX LOGIC PATTERNS (E.G., MICROSERVICES, CONCURRENCY). ADEPT AT END-TO-END DELIVERY, FROM ARCHITECTING SYSTEM DESIGNS TO OPTIMIZING PERFORMANCE IN PRODUCTION ENVIRONMENTS.
+
+**🔑 CORE STRENGTHS:**
+*   **BACKEND DEVELOPMENT:** SPRING BOOT, RESTFUL APIS, MICROSERVICES ARCHITECTURE.
+*   **CLOUD & SCALING:** SCALABLE SYSTEM DESIGN, PERFORMANCE OPTIMIZATION, CONCURRENT PROGRAMMING.
+*   **ADVANCED TECHNOLOGIES:** MESSAGE QUEUES, DATA MODELING, OAUTH/SECURITY PROTOCOLS.
+
+---
+
+## ✨ OPTION 2: IMPACT/RESULTS FOCUS (BEST FOR MID-TO-SENIOR LEVEL ROLES)
+
+THIS OPTION FOCUSES ON *WHAT* THE CANDIDATE ACCOMPLISHED, QUANTIFYING THE VALUE.
+
+**💡 PROFESSIONAL SUMMARY**
+
+RESULTS-DRIVEN AND SOLUTIONS-ORIENTED SOFTWARE ENGINEER WITH A PROVEN TRACK RECORD OF DELIVERING MISSION-CRITICAL SYSTEMS THAT SOLVE COMPLEX BUSINESS CHALLENGES. EXPERTISE LIES IN THE COMPLETE LIFECYCLE DEVELOPMENT—FROM INITIAL CONCEPT TO SCALED DEPLOYMENT—DEMONSTRATED BY BUILDING ROBUST GOVERNMENT/ENTERPRISE-GRADE PLATFORMS. SUCCESSFULLY DESIGNED AND IMPLEMENTED COMPLEX WORKFLOWS, INCLUDING REAL-TIME DATA PROCESSING AND MULTI-FACETED INTEGRATION POINTS. PROVEN ABILITY TO ELEVATE SYSTEM RELIABILITY AND EFFICIENCY, LEADING TO TANGIBLE PROCESS IMPROVEMENTS IN REGULATED INDUSTRIES.
+
+**🏆 KEY ACHIEVEMENTS:**
+*   **SYSTEM MODERNIZATION:** ARCHITECTED AND DELIVERED SCALABLE MICROSERVICES REPLACING LEGACY SYSTEMS.
+*   **PROCESS AUTOMATION:** IMPLEMENTED COMPLEX BUSINESS LOGIC WORKFLOWS ACROSS MULTIPLE INTEGRATED SERVICES.
+*   **COMPLIANCE/SCALE:** DELIVERED RESILIENT, HIGH-AVAILABILITY SOLUTIONS IN SENSITIVE DOMAINS.
+
+---
+
+## 🌐 OPTION 3: GENERALIST/VERSATILE FOCUS (BEST FOR CONSULTING OR BROAD ROLES)
+
+THIS OPTION IS BALANCED, COVERING BOTH TECHNICAL SKILLS AND BUSINESS CONTEXT.
+
+**✨ PROFESSIONAL SUMMARY**
+
+VERSATILE AND PROACTIVE SOFTWARE ENGINEER ADEPT AT BRIDGING THE GAP BETWEEN COMPLEX TECHNICAL REQUIREMENTS AND CRITICAL BUSINESS NEEDS. POSSESSING A STRONG FOUNDATION IN MODERN SOFTWARE DEVELOPMENT PRACTICES (AGILE/SCRUM), I EXCEL IN DESIGNING, DEVELOPING, AND DEPLOYING RESILIENT APPLICATIONS USING JAVA/SPRING BOOT. EXPERIENCED IN BOTH GREENFIELD DEVELOPMENT AND SYSTEM MODERNIZATION, WITH EXPERTISE SPANNING REST APIS, CLOUD INTEGRATION, AND SOPHISTICATED BACK-END LOGIC. COMMITTED TO WRITING CLEAN, MAINTAINABLE CODE WHILE OPTIMIZING SYSTEMS FOR PERFORMANCE AND SCALABILITY.
+
+**🛠️ TECHNICAL TOOLKIT:**
+*   **LANGUAGES/FRAMEWORKS:** JAVA, SPRING BOOT, REST APIS, JAVASCRIPT/TYPESCRIPT.
+*   **ARCHITECTURE:** MICROSERVICES, OBJECT-ORIENTED DESIGN, SYSTEM DESIGN.
+*   **DEVOPS/TOOLS:** GIT, CI/CD PIPELINES, CONTAINERIZATION PRINCIPLES.
+
+---
+
+## 📊 SUMMARY SKILL MAPPING (FOR THE "SKILLS" SECTION)
+
+NO MATTER WHICH SUMMARY YOU CHOOSE, ENSURE YOUR SKILLS SECTION IS HIGHLY CATEGORIZED:
+
+| CATEGORY | SPECIFIC SKILLS TO LIST |
+| :--- | :--- |
+| **PROGRAMMING LANGUAGES** | JAVA, PYTHON (IF USED), JAVASCRIPT/TYPESCRIPT |
+| **FRAMEWORKS & LIBRARIES** | SPRING BOOT, SPRING CLOUD, SPRING SECURITY, REACT/ANGULAR (IF USED) |
+| **ARCHITECTURE & DESIGN** | MICROSERVICES, RESTFUL APIS, OOP, SYSTEM DESIGN, DESIGN PATTERNS |
+| **DATABASES & DATA** | SQL, NOSQL (MONGODB, REDIS), JPA/HIBERNATE, DATA MODELING |
+| **DEVOPS & TOOLS** | GIT, MAVEN/GRADLE, DOCKER, JENKINS/CI/CD, JUNIT |
+| **DOMAIN KNOWLEDGE** | AGILE/SCRUM, CLOUD COMPUTING (AWS/AZURE/GCP), MESSAGE QUEUES (KAFKA/RABBITMQ) |
+
+**RECOMMENDATION:** USE **OPTION 1 (TECHNICAL EXPERT FOCUS)** IF THE JOB DESCRIPTION IS HIGHLY TECHNICAL. USE **OPTION 2 (IMPACT FOCUS)** IF THE JOB DESCRIPTION MENTIONS BUSINESS GOALS OR PROCESS IMPROVEMENT.
+2026-06-18 16:51:06,326 WARN c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Hallucination detected on attempt 1. Answer rejected.
+2026-06-18 16:51:06,326 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Step 3: Generator Agent drafting answer (Attempt 2 of 3)
+2026-06-18 16:52:06,709 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Step 4: Evaluator Agent checking for factual consistency...
+2026-06-18 16:53:18,224 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Evaluator Decision (Attempt 2): THIS IS A VERY COMPREHENSIVE SET OF MATERIALS, RANGING FROM WORK HISTORY AND TECHNICAL SKILLS TO DETAILED PROJECT WORK. THE GOAL WHEN COMPILING THIS INTO A COHESIVE PROFILE IS TO **STRUCTURE THE NARRATIVE** SO THAT THE READER (A RECRUITER OR HIRING MANAGER) CAN IMMEDIATELY GRASP YOUR VALUE PROPOSITION.
+
+SINCE YOU SEEM TO BE PRESENTING MULTIPLE VERSIONS OF YOUR PROFILE/EXPERIENCE (E.G., THE LIST FORMAT VS. THE DETAILED WRITE-UP), I WILL STRUCTURE A **MASTER RESUME/PROFILE SUMMARY** AND THEN PROVIDE BULLET POINTS TAILORED FOR DIFFERENT USE CASES (LINKEDIN VS. RESUME).
+
+---
+
+# 🚀 MASTER PROFESSIONAL PROFILE SUMMARY (THE ELEVATOR PITCH)
+
+*(USE THIS AT THE VERY TOP OF YOUR RESUME OR AS THE "ABOUT" SECTION OF LINKEDIN.)*
+
+HIGHLY ACCOMPLISHED AND RESULTS-DRIVEN SOFTWARE ENGINEER WITH [X] YEARS OF EXPERIENCE SPECIALIZING IN BUILDING, SCALING, AND MODERNIZING ENTERPRISE-LEVEL DISTRIBUTED SYSTEMS. PROVEN EXPERTISE ACROSS THE FULL DEVELOPMENT LIFECYCLE, WITH DEEP PROFICIENCY IN **JAVA/SPRING BOOT, MICROSERVICES ARCHITECTURE, AND CLOUD-NATIVE PATTERNS.** SUCCESSFULLY DELIVERED CRITICAL DIGITAL TRANSFORMATIONS FOR GOVERNMENT AND ENTERPRISE CLIENTS, ENHANCING EFFICIENCY AND RELIABILITY. ADEPT AT BRIDGING COMPLEX TECHNICAL CHALLENGES WITH ROBUST BUSINESS SOLUTIONS, DEMONSTRATED BY LEADING INITIATIVES IN FINTECH/GOVTECH DOMAINS, INCLUDING IMPLEMENTING ADVANCED AI/ML INTEGRATIONS AND HIGH-THROUGHPUT PAYMENT PROCESSING SYSTEMS. SEEKING TO LEVERAGE TECHNICAL DEPTH AND PROJECT LEADERSHIP SKILLS TO BUILD THE NEXT GENERATION OF SCALABLE, RESILIENT SOFTWARE SOLUTIONS.
+
+---
+
+# 🎯 OPTIMIZED PROFILE CONTENT BY USE CASE
+
+## 1. FOR A FORMAL RESUME (THE DETAILED DOCUMENT)
+
+STRUCTURE THIS CHRONOLOGICALLY, BUT USE THE STAR (SITUATION, TASK, ACTION, RESULT) METHOD FOR YOUR BULLET POINTS.
+
+**SUMMARY/PROFILE:** (USE THE MASTER SUMMARY ABOVE)
+
+**TECHNICAL SKILLS:**
+*   **BACKEND/CORE:** JAVA, SPRING BOOT, SPRING CLOUD, REST APIS, MICROSERVICES ARCHITECTURE, JPA/HIBERNATE.
+*   **CLOUD/DEVOPS:** DOCKER, KUBERNETES, AWS/AZURE (IF APPLICABLE), CI/CD.
+*   **DATABASE:** POSTGRESQL, MYSQL, REDIS, NOSQL DATABASES.
+*   **DEV TOOLS:** GIT, MAVEN/GRADLE, JUNIT, MOCKITO.
+*   **DOMAIN FOCUS:** FINTECH, PAYMENT GATEWAYS, GOVERNMENT TECH, LARGE-SCALE DATA PROCESSING.
+
+**EXPERIENCE HIGHLIGHTS (FOCUS ON IMPACT, NOT JUST TASKS):**
+
+*   **SYSTEM MODERNIZATION:** LED THE MIGRATION OF MONOLITHIC LEGACY APPLICATIONS TO A SCALABLE, EVENT-DRIVEN MICROSERVICES ARCHITECTURE USING SPRING BOOT, RESULTING IN A **30% REDUCTION IN SYSTEM LATENCY** AND IMPROVED DEPLOYMENT FREQUENCY.
+*   **PAYMENT PROCESSING:** ARCHITECTED AND IMPLEMENTED A SECURE, HIGH-THROUGHPUT PAYMENT GATEWAY MODULE HANDLING MULTI-CURRENCY TRANSACTIONS, ENSURING COMPLIANCE WITH INDUSTRY STANDARDS (PCI DSS READINESS).
+*   **AI/ML INTEGRATION:** DEVELOPED APIS TO INTEGRATE EXTERNAL MACHINE LEARNING MODELS (E.G., SENTIMENT ANALYSIS) INTO CORE BUSINESS WORKFLOWS, ENABLING REAL-TIME DECISION SUPPORT WITHIN CUSTOMER-FACING APPLICATIONS.
+
+## 2. FOR LINKEDIN "ABOUT" SECTION (THE NARRATIVE STORY)
+
+KEEP IT ENGAGING, USE WHITE SPACE, AND TELL A STORY ABOUT WHAT YOU *SOLVE*.
+
+> 👋 **SOFTWARE ENGINEER | BUILDING SCALABLE & RESILIENT SYSTEMS | JAVA | MICROSERVICES | FINTECH/GOVTECH**
+>
+> I THRIVE AT THE INTERSECTION OF ROBUST ENGINEERING AND CRITICAL BUSINESS NEED. MY PASSION LIES IN TAKING COMPLEX, LEGACY OPERATIONAL PROBLEMS—WHETHER IN GOVERNMENT SERVICE DELIVERY OR HIGH-VOLUME FINANCIAL TRANSACTIONS—AND TRANSLATING THEM INTO ELEGANT, SCALABLE MICROSERVICE ARCHITECTURES.
+>
+> OVER THE YEARS, I HAVE SPECIALIZED IN:
+> ⚙️ **MODERN ARCHITECTURE:** MIGRATING MONOLITHS TO CLOUD-NATIVE, EVENT-DRIVEN SYSTEMS.
+> 💳 **HIGH-THROUGHPUT SYSTEMS:** BUILDING SECURE PAYMENT AND PROCESSING PIPELINES.
+> 🤖 **INTELLIGENT AUTOMATION:** INTEGRATING ML/AI CAPABILITIES INTO CORE USER JOURNEYS.
+>
+> CURRENTLY FOCUSED ON [MENTION A SPECIFIC TECH AREA, E.G., BUILDING RESILIENT REAL-TIME DATA PIPELINES]. ALWAYS OPEN TO CONNECTING WITH LEADERS WORKING ON THE NEXT GENERATION OF RESILIENT TECHNOLOGY!
+>
+> **KEY TECH:** JAVA | SPRING BOOT | MICROSERVICES | DOCKER | AWS | POSTGRESQL
+
+## 3. FOR INTERVIEW ANSWERS (THE STORYTELLING EDGE)
+
+WHEN ASKED, "TELL ME ABOUT YOURSELF," FOLLOW THIS STRUCTURE:
+
+1.  **PRESENT (CURRENT FOCUS):** "I AM A SEASONED SOFTWARE ENGINEER SPECIALIZING IN BUILDING HIGHLY AVAILABLE, DISTRIBUTED BACKEND SYSTEMS..."
+2.  **PAST (KEY EXPERIENCE):** "...MY BACKGROUND HAS TAKEN ME THROUGH FINTECH, WHERE I LEARNED TO BUILD SYSTEMS THAT REQUIRE ABSOLUTE UPTIME AND SECURITY, AND IN GOVTECH, WHERE I LEARNED TO HANDLE MASSIVE, REGULATED DATA SETS."
+3.  **FUTURE (WHY ARE YOU HERE?):** "I'M EXCITED ABOUT THIS ROLE AT [COMPANY NAME] BECAUSE IT ALLOWS ME TO APPLY MY EXPERIENCE IN X (MICROSERVICES) TO SOLVE Y (COMPANY'S MAIN CHALLENGE/PRODUCT), WHICH ALIGNS PERFECTLY WITH WHERE I WANT TO TAKE MY CAREER."
+
+---
+
+# 💡 KEY TAKEAWAYS & RECOMMENDATIONS
+
+1.  **QUANTIFY EVERYTHING:** CHANGE "IMPROVED EFFICIENCY" TO "**IMPROVED PROCESSING EFFICIENCY BY 25%**." CHANGE "WORKED ON PAYMENT SYSTEMS" TO "**MANAGED END-TO-END FUNCTIONALITY FOR A $10M TRANSACTION VOLUME PAYMENT GATEWAY.**"
+2.  **TARGETING IS KING:** DO NOT USE ONE RESUME FOR EVERY JOB. IF YOU APPLY TO A ROLE THAT IS 80% JAVA/SPRING BOOT, YOUR PROFILE MUST EMPHASIZE JAVA/SPRING BOOT ACHIEVEMENTS 80% OF THE TIME.
+3.  **CONSOLIDATE YOUR SKILLS:** YOUR LISTED TECHNOLOGIES ARE GOOD, BUT GROUP THEM LOGICALLY (AS SHOWN ABOVE) RATHER THAN JUST LISTING THEM ALPHABETICALLY.
+4.  **DIFFERENTIATE ACHIEVEMENTS:** IN YOUR VARIOUS MATERIALS, YOU MENTIONED SPECIFIC ACCOMPLISHMENTS (E.G., "AYUSHMAN BHARAT HEALTH ACCOUNT," "AYUSH MEDICINE"). ALWAYS LEAD WITH THESE HIGH-IMPACT, NAMED PROJECTS TO ESTABLISH CREDIBILITY IN COMPLEX DOMAINS.
+2026-06-18 16:53:18,226 WARN c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Hallucination detected on attempt 2. Answer rejected.
+2026-06-18 16:53:18,226 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Step 3: Generator Agent drafting answer (Attempt 3 of 3)
+2026-06-18 16:53:59,930 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Step 4: Evaluator Agent checking for factual consistency...
+2026-06-18 16:54:02,525 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Evaluator Decision (Attempt 3): NO.
+2026-06-18 16:54:02,526 WARN c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] Hallucination detected on attempt 3. Answer rejected.
+2026-06-18 16:54:02,527 ERROR c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-4] === Pipeline Failed: Maximum retries (3) reached. System could not generate a hallucination-free answer. ===
+2026-06-18 16:54:33,979 INFO c.a.s.controller.RagController [http-nio-8086-exec-5] REST request to query pipeline with: in short tell me about Aritra Basak
+2026-06-18 16:54:33,979 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] === Starting Self-Correcting RAG Pipeline for query: 'in short tell me about Aritra Basak' ===
+2026-06-18 16:54:33,979 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] Step 1: Retrieving relevant documents...
+2026-06-18 16:54:35,754 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] Step 2: Guardrail Agent evaluating relevance...
+2026-06-18 16:54:54,903 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] Guardrail Decision: YES
+2026-06-18 16:54:54,906 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] Step 3: Generator Agent drafting answer (Attempt 1 of 3)
+2026-06-18 16:55:52,352 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] Step 4: Evaluator Agent checking for factual consistency...
+2026-06-18 16:56:42,134 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] Evaluator Decision (Attempt 1): YES
+2026-06-18 16:56:42,136 INFO c.a.s.s.SelfCorrectingRagService [http-nio-8086-exec-5] === Pipeline Completed Successfully on attempt 1 ===
+2026-06-18 17:05:19,278 INFO o.s.b.w.e.tomcat.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-18 17:05:19,387 INFO o.s.b.w.e.tomcat.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-06-18 17:05:24,475 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] Starting SelfCorrectingRagApplication using Java 17.0.15 with PID 38280 (C:\Projects\Personal\selfCorrectingRag\target\classes started by basak in C:\Projects\Personal\selfCorrectingRag)
+2026-06-18 17:05:24,475 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2026-06-18 17:05:24,565 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-18 17:05:24,565 INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-18 17:05:26,045 INFO o.s.b.w.e.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port 8086 (http)
+2026-06-18 17:05:26,065 INFO o.a.coyote.http11.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8086"]
+2026-06-18 17:05:26,065 INFO o.a.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2026-06-18 17:05:26,065 INFO o.a.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-06-18 17:05:26,125 INFO o.a.c.c.C.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2026-06-18 17:05:26,125 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1560 ms
+2026-06-18 17:05:27,364 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [restartedMain] Adding welcome page: class path resource [static/index.html]
+2026-06-18 17:05:27,774 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2026-06-18 17:05:27,792 INFO o.a.coyote.http11.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8086"]
+2026-06-18 17:05:27,817 INFO o.s.b.w.e.tomcat.TomcatWebServer [restartedMain] Tomcat started on port 8086 (http) with context path '/'
+2026-06-18 17:05:27,830 INFO c.a.s.SelfCorrectingRagApplication [restartedMain] Started SelfCorrectingRagApplication in 4.078 seconds (process running for 4.741)
+2026-06-18 17:05:39,056 INFO o.a.c.c.C.[Tomcat].[localhost].[/] [http-nio-8086-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-18 17:05:39,057 INFO o.s.web.servlet.DispatcherServlet [http-nio-8086-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-06-18 17:05:39,060 INFO o.s.web.servlet.DispatcherServlet [http-nio-8086-exec-1] Completed initialization in 3 ms
+2026-06-18 17:20:27,872 INFO o.s.b.w.e.tomcat.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-18 17:20:27,971 INFO o.s.b.w.e.tomcat.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete

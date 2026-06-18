@@ -6,6 +6,41 @@ A production-grade, agentic **Retrieval-Augmented Generation (RAG)** pipeline bu
 
 ## 🏗️ System Architecture & Workflow
 
+## 🔐 Security & Authentication (GitHub OAuth2)
+
+To ensure the RAG workspace remains secure and access-controlled, the application integrates **Spring Security** with **GitHub OAuth2** for seamless, passwordless authentication.
+
+Unauthenticated users are greeted by a minimalistic public landing page. Upon clicking the login trigger, the system initiates the OAuth 2.0 authorization code flow. Once authenticated, Spring Security establishes a secure session (with CSRF protection enabled for the SPA) and seamlessly transitions the UI into the private RAG chat workspace.
+
+### Authentication Workflow
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User
+    participant UI as Frontend (Browser)
+    participant Sec as Spring Security
+    participant Git as GitHub OAuth2 Provider
+
+    User->>UI: Access Application (http://localhost:8086)
+    UI-->>User: Display Public Landing Page
+    User->>UI: Click "Sign in with GitHub"
+    UI->>Sec: Route to /oauth2/authorization/github
+    Sec->>Git: Redirect to GitHub Authorization Endpoint
+    
+    Note over User,Git: User authenticates securely on GitHub's domain
+    
+    Git->>Sec: Return Auth Code via Callback (/login/oauth2/code/github)
+    Sec->>Git: Back-channel exchange: Code for Access Token
+    Git-->>Sec: Return User Profile Details
+    
+    Note over Sec: Session Established & CSRF Token Generated
+    
+    Sec-->>UI: Redirect to Secured RAG Workspace (/)
+    UI->>Sec: GET /api/user (Verify Session Identity)
+    Sec-->>UI: Return GitHub Username (200 OK)
+    UI-->>User: Display Authenticated Chat Interface
+```
 Standard RAG architectures blindly trust whatever context is retrieved from a vector database, often leading to off-topic answers or hallucinations. This system introduces an intelligent, multi-agent validation loop to enforce data reliability before an answer ever reaches the client.
 
 ```mermaid
@@ -98,6 +133,13 @@ Configure your `src/main/resources/application.yml` file to securely bind the Sp
 
 ```yaml
 spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: YOUR_GITHUB_CLIENT_ID
+            client-secret: YOUR_GITHUB_CLIENT_SECRET
   ai:
     ollama:
       base-url: http://localhost:11434
@@ -112,7 +154,8 @@ spring:
           host: http://localhost
           port: 8000
 ```
-
+OAuth2 Configuration
+To enable this feature locally, you must register a new OAuth application in your GitHub Developer Settings with the callback URL set to http://localhost:8086/login/oauth2/code/github.
 ---
 
 ---

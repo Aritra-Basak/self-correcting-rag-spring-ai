@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Correcting RAG</title>
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Marked.js for rendering Markdown in chat -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+        body, html {
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            /* Subtle animated dark gradient background */
+            background: linear-gradient(-45deg, #0f172a, #020617, #171717, #082f49);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #e2e8f0;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-btn {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .glass-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        /* Chat Layout */
+        #chat-container {
+            height: calc(100vh - 160px);
+            overflow-y: auto;
+            padding-bottom: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .chat-message {
+            max-width: 75%;
+            margin-bottom: 20px;
+            padding: 16px 20px;
+            border-radius: 16px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .user-msg {
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.05);
+        }
+
+        .ai-msg {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-right: auto;
+            border-bottom-left-radius: 4px;
+        }
+
+        /* Markdown Styles within AI messages */
+        .ai-msg p:last-child { margin-bottom: 0; }
+        .ai-msg pre { background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; }
+        .ai-msg code { color: #38bdf8; }
+
+        /* Floating Input Area */
+        .input-wrapper {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            z-index: 10;
+        }
+
+        .input-glass {
+            background: rgba(0, 0, 0, 0.4) !important;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+            border-radius: 24px 0 0 24px;
+            padding: 14px 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .input-glass:focus {
+            box-shadow: 0 0 0 0.25rem rgba(56, 189, 248, 0.25) !important;
+            border-color: rgba(56, 189, 248, 0.5) !important;
+        }
+
+        .send-btn-glass {
+            border-radius: 0 24px 24px 0;
+            background: rgba(56, 189, 248, 0.2);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-left: none;
+            color: #38bdf8;
+            padding: 0 24px;
+            transition: all 0.3s;
+        }
+
+        .send-btn-glass:hover {
+            background: rgba(56, 189, 248, 0.4);
+            color: #fff;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
+
+        .hide { display: none !important; }
+    </style>
+</head>
+<body>
+
+<!-- Public Auth View -->
+<div id="unauthenticated" class="container d-flex flex-column justify-content-center align-items-center h-100">
+    <div class="glass-panel p-5 rounded-4 text-center" style="max-width: 450px; width: 100%;">
+        <div class="mb-4 d-inline-block p-4 rounded-circle" style="background: rgba(56, 189, 248, 0.1);">
+            <i class="bi bi-cpu text-info" style="font-size: 3.5rem;"></i>
+        </div>
+        <h2 class="mb-3 fw-bold">Self-Correcting RAG</h2>
+        <p class="text-secondary mb-5 fs-6">Secure, hallucination-free document analysis powered by intelligent routing.</p>
+        <a href="/oauth2/authorization/github" class="btn glass-btn w-100 py-3 rounded-pill d-flex align-items-center justify-content-center gap-2">
+            <i class="bi bi-github fs-5"></i> <span>Sign in with GitHub</span>
+        </a>
+    </div>
+</div>
+
+<!-- Authenticated Chat View -->
+<div id="authenticated" class="h-100 d-flex flex-column hide">
+
+    <!-- Header -->
+    <div class="glass-panel d-flex justify-content-between align-items-center p-3 px-4 border-top-0 border-start-0 border-end-0">
+        <div class="d-flex align-items-center gap-3">
+            <i class="bi bi-cpu text-info fs-4"></i>
+            <h5 class="m-0 fw-semibold tracking-wide">RAG Workspace</h5>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+            <span class="text-secondary fs-sm" id="user-greeting"></span>
+            <button class="btn glass-btn btn-sm rounded-pill px-3 d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#uploadModal">
+                <i class="bi bi-cloud-arrow-up"></i> Upload Doc
+            </button>
+            <form action="/logout" method="post" class="m-0">
+                <input type="hidden" name="_csrf" id="logout-csrf">
+                <button type="submit" class="btn glass-btn btn-sm rounded-circle" title="Sign Out" style="width: 32px; height: 32px; padding: 0;">
+                    <i class="bi bi-box-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chat Area -->
+    <div id="chat-container" class="container-fluid pt-4 d-flex flex-column" style="max-width: 1000px; margin: 0 auto;">
+        <div class="chat-message ai-msg">
+            <p>Welcome to your self-correcting RAG pipeline. Please upload a document using the button in the top right to begin analysis.</p>
+        </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="input-wrapper">
+        <div class="input-group shadow-lg">
+            <input type="text" id="queryInput" class="form-control input-glass" placeholder="Ask a question about your document..." autocomplete="off">
+            <button class="btn send-btn-glass" id="sendBtn">
+                <i class="bi bi-send-fill"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Glass Upload Modal -->
+<div class="modal fade" id="uploadModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="glass-panel modal-content rounded-4 border-0">
+            <div class="modal-header border-bottom border-secondary border-opacity-25">
+                <h5 class="modal-title fw-semibold"><i class="bi bi-file-earmark-text me-2"></i>Knowledge Base</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4">
+                <input class="form-control input-glass rounded-3 mb-3" type="file" id="fileInput">
+                <div id="uploadStatus" class="text-sm text-center" style="min-height: 24px;"></div>
+            </div>
+            <div class="modal-footer border-top border-secondary border-opacity-25">
+                <button type="button" class="btn glass-btn rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info rounded-pill px-4 text-dark fw-medium" id="uploadBtn">Ingest</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Configure marked.js to be secure
+    marked.setOptions({ headerIds: false, mangle: false });
+
+    function getCsrfToken() {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; XSRF-TOKEN=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return '';
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const csrfToken = getCsrfToken();
+        if (document.getElementById('logout-csrf')) document.getElementById('logout-csrf').value = csrfToken;
+
+        // Auth Check
+        fetch("/api/user")
+            .then(res => {
+                if (res.ok) return res.json();
+                throw new Error("Not logged in");
+            })
+            .then(data => {
+                document.getElementById("unauthenticated").classList.add("hide");
+                document.getElementById("authenticated").classList.remove("hide");
+                document.getElementById("user-greeting").innerHTML = `<i class="bi bi-person-circle me-1"></i> ${data.name}`;
+            })
+            .catch(() => {
+                document.getElementById("unauthenticated").classList.remove("hide");
+            });
+
+        // Upload Logic
+        document.getElementById("uploadBtn").addEventListener("click", async () => {
+            const fileInput = document.getElementById("fileInput");
+            const statusDiv = document.getElementById("uploadStatus");
+
+            if (!fileInput.files[0]) {
+                statusDiv.innerHTML = '<span class="text-warning"><i class="bi bi-exclamation-triangle"></i> Please select a file.</span>';
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+            statusDiv.innerHTML = '<span class="text-info"><span class="spinner-border spinner-border-sm me-2"></span>Ingesting...</span>';
+
+            try {
+                const res = await fetch("/api/v1/rag/upload", {
+                    method: "POST",
+                    headers: { "X-XSRF-TOKEN": getCsrfToken() },
+                    body: formData
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    statusDiv.innerHTML = `<span class="text-success"><i class="bi bi-check-circle-fill"></i> ${data.message}</span>`;
+                    setTimeout(() => {
+                        bootstrap.Modal.getInstance(document.getElementById('uploadModal')).hide();
+                        statusDiv.innerHTML = '';
+                        fileInput.value = '';
+                    }, 1500);
+                } else {
+                    statusDiv.innerHTML = `<span class="text-danger"><i class="bi bi-x-circle-fill"></i> ${data.error}</span>`;
+                }
+            } catch (err) {
+                statusDiv.innerHTML = `<span class="text-danger"><i class="bi bi-x-circle-fill"></i> Upload failed.</span>`;
+            }
+        });
+
+        // Chat Logic
+        const queryInput = document.getElementById("queryInput");
+        const chatContainer = document.getElementById("chat-container");
+
+        const appendMessage = (text, isUser) => {
+            const div = document.createElement("div");
+            div.className = `chat-message ${isUser ? 'user-msg' : 'ai-msg'}`;
+
+            // Parse markdown for AI responses, treat user text as plain text
+            div.innerHTML = isUser ? text : marked.parse(text);
+
+            chatContainer.appendChild(div);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        };
+
+        const sendQuery = async () => {
+            const query = queryInput.value.trim();
+            if (!query) return;
+
+            appendMessage(query, true);
+            queryInput.value = "";
+
+            const typingIndicator = document.createElement("div");
+            typingIndicator.className = "chat-message ai-msg text-secondary";
+            typingIndicator.innerHTML = '<span class="spinner-grow spinner-grow-sm me-2"></span> Evaluating context...';
+            chatContainer.appendChild(typingIndicator);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            try {
+                const res = await fetch("/api/v1/rag/query", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-XSRF-TOKEN": getCsrfToken()
+                    },
+                    body: JSON.stringify({ query: query })
+                });
+                const data = await res.json();
+
+                chatContainer.removeChild(typingIndicator);
+
+                if (res.ok) {
+                    appendMessage(data.answer, false);
+                } else {
+                    appendMessage(`**Error:** ${data.error}`, false);
+                }
+            } catch (err) {
+                chatContainer.removeChild(typingIndicator);
+                appendMessage("**Error:** Failed to connect to the RAG pipeline.", false);
+            }
+        };
+
+        document.getElementById("sendBtn").addEventListener("click", sendQuery);
+        queryInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") sendQuery();
+        });
+    });
+</script>
+</body>
+</html>
