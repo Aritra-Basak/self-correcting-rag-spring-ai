@@ -14,7 +14,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/rag") // Adding /v1/ shows you understand API versioning
+@RequestMapping("/api/v1/rag")
 @RequiredArgsConstructor
 public class RagController {
 
